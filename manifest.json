@@ -2,8 +2,8 @@
   "author": "cat.alucardo@gmail.com",
   "manifest_version": 2,
   "name": "CSS sleeper shift+c & shift+s",
-  "version": "4",
-  "description": "Disable CSS with key-combo. S toggles 1by1 down list of stylesheets. C has a list of all combinations (x!; 1*2*3*...x) of stylesheets, and toggles them accordingly.",
+  "version": "6",
+  "description": "Disable CSS with button or key-combo. shift+S toggles 1by1 down the list of stylesheets. shift+C has a list of stylesheets split into thirds + a full + a empty and toggles between them. To not affect typing the buttons need to be in focus (click them once then key-combo), or if button isn't visible alt+c (Ex. youtube).",
   "permissions": ["activeTab"],
   "icons": {
 	"16": "!css.png"

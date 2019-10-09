@@ -1,45 +1,63 @@
-function combinations(str) {
-  var fn = function(active, rest, a) {
-    if (!active.length && !rest.length){return;}
-    if (!rest.length) {a.push(active);}
-    else {
-      fn(active.concat([rest[0]]), rest.slice(1), a);
-      fn(active, rest.slice(1), a);
-    }
-    return a;
-  }
-  return fn([], str, []);
-}
+var styles, tol, tollen, stylelen, current, buttonEleC, buttonEleS
 
 window.addEventListener('load', (event) => {holyshitonloadeventandsimiliarisbroken()});
-(document.readyState === "complete") ? holyshitonloadeventandsimiliarisbroken() : holyshitonloadeventandsimiliarisbroken()
+(document.readyState === "complete") ? holyshitonloadeventandsimiliarisbroken() : false
 
-function holyshitonloadeventandsimiliarisbroken(){
-  listenOnce();
-  function listenOnce(){console.log('listenONCE')};
-  var styles = [...document.styleSheets]
-  styles.forEach(e=>e.disabled=true)
-  var tol = combinations(styles)
-  tol.unshift([])
-  var count = tol.length
-  var stylecount = styles.length
-  var current = 0
-  console.log(tol);
-  console.log('load? css-sleeper shift+c & shift+s')
-}
-
-function listenOnce(){
-  window.addEventListener("keydown", function(event) {
+window.addEventListener("keydown", function(event) {
+  if (event.target === buttonEleC || event.target === buttonEleS){  
     if (event.shiftKey  &&  event.code === "KeyC"){
-      let picker = current % count
-      styles.forEach(e=>e.disabled=false)
-      tol[picker].forEach(e=>e.disabled=true)
-      current++
+      shiftC()
     }
     if (event.shiftKey  &&  event.code === "KeyS"){
-      let picker = current % stylecount
-      styles[picker].disabled = !styles[picker].disabled
-      current++
+      shiftS()
     }
-  }, true);
+  }
+  if (event.altKey  &&  event.code === "KeyC"){
+    console.log('alt+c not in use? well sites like youtube block the top soooo...');
+    shiftC()
+  }
+}, true);
+
+function splitter(allsheet,oneXth=3){
+  return [...Array(oneXth)].map((item,ind)=>{
+    return allsheet.filter((it,index)=>(index%oneXth)===ind? it: false)
+  })
+};
+
+function holyshitonloadeventandsimiliarisbroken(){
+  styles = [...document.styleSheets]
+//  styles.forEach(e=>e.disabled=true) //disable on load
+  tol = splitter(styles,3)
+  tol.unshift(styles)
+  tol.unshift([])
+  tollen = tol.length
+  stylelen = styles.length
+  current = 0
+  console.log(tol);
+  buttons()
 }
+
+function shiftC(){
+  styles.forEach(e=>e.disabled=false)
+  tol[(current++ % tollen)].forEach(e=>e.disabled=true)
+}
+function shiftS(){
+  styles[(current % stylelen)].disabled = !styles[(current % stylelen)].disabled
+  current++
+}
+
+function buttons(){
+  buttonEleC = document.createElement('button');
+  buttonEleS = document.createElement('button');
+  buttonEleC.type = 'button';
+  buttonEleS.type = 'button';
+  buttonEleC.title = 'otherwise it will trigger while typing';
+  buttonEleS.title = 'button needs to be focus for keypress';
+  buttonEleC.textContent = "css-sleeper shift+C"
+  buttonEleS.textContent = "css-sleeper shift+S"
+  document.body.prepend(buttonEleC)
+  document.body.prepend(buttonEleS)
+  buttonEleC.onclick = shiftC
+  buttonEleS.onclick = shiftS
+}
+
