@@ -2,7 +2,7 @@
   "author": "cat.alucardo@gmail.com",
   "manifest_version": 2,
   "name": "CSS sleeper shift+c & shift+s",
-  "version": "2",
+  "version": "4",
   "description": "Disable CSS with key-combo. S toggles 1by1 down list of stylesheets. C has a list of all combinations (x!; 1*2*3*...x) of stylesheets, and toggles them accordingly.",
   "permissions": ["activeTab"],
   "icons": {
