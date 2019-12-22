@@ -57,9 +57,10 @@ function shiftC(){
 }
 function shiftN(){
   (document.querySelectorAll('[style]').length===0) ? inlinestyles.map(e=>e.remove()) : false
-  inlinestyles= [...document.querySelectorAll('[style]')]
-  inlinestyles.map(e=>e.removeAttribute('style'))
+  inlinestyles= [...document.querySelectorAll('[style]')];
+  inlinestyles.map(e=>e.removeAttribute('style'));
   fcount.push('n')
+  console.log('Note: the website I tested on, how lucky, would create a new style on mouse click thus never allowing the element purge feature. The remedy was Shift+N.')
 }
 function shiftL(){
   localStorage.setItem('cssSleeper', JSON.stringify(fcount));
@@ -86,9 +87,9 @@ function buttons(){
   buttonEleU.title = 'Who would of guessed having a clear button is nice. press this and reload for css';
   buttonEleC.textContent = "css-sleeper shift+C"
   buttonEleS.textContent = "css-sleeper shift+S"
-  buttonEleN.textContent = "css-sleeper shift+N"
-  buttonEleL.textContent = "css-sleeper Keep"
-  buttonEleU.textContent = "css-sleeper Clear"
+  buttonEleN.textContent = "shift+N"
+  buttonEleL.textContent = "Keep"
+  buttonEleU.textContent = "Clear"
   document.body.prepend(buttonEleU)
   document.body.prepend(buttonEleL)
   document.body.prepend(buttonEleN)

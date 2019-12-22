@@ -2,7 +2,7 @@
   "author": "cat.alucardo@gmail.com",
   "manifest_version": 2,
   "name": "CSS sleeper",
-  "version": "13",
+  "version": "15",
   "description": "Disable CSS with button or key-combo. shift+S toggles 1by1 down the list of stylesheets. shift+C has a list of stylesheets split into thirds + a full + a empty and toggles between them. shift+N is for inline style, Not! a toggle 1st click removes style & 2nd click removes the element entirely. No hotkey for keep, keep sets a localstorage item of the 'history' of the current page load so when page is reloaded it will 'play' the 'history'. To not affect typing the buttons need to be in focus (click them once then key-combo), or if button isn't visible alt+c (Ex. youtube).",
   "permissions": ["activeTab"],
   "icons": {
