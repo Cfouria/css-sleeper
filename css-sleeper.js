@@ -41,6 +41,9 @@ function holyshitonloadeventandsimiliarisbroken(){
   fcount = []
   shiftLoad()
 }
+function shiftLoad(){
+  JSON.parse(localStorage.getItem('cssSleeper')).forEach(e=>{e==='s'?shiftS():false;e==='c'?shiftC():false;e==='n'?shiftN():false;})
+}
 
 function shiftS(){
   styles[(current % stylelen)].disabled = !styles[(current % stylelen)].disabled
@@ -61,8 +64,8 @@ function shiftN(){
 function shiftL(){
   localStorage.setItem('cssSleeper', JSON.stringify(fcount));
 }
-function shiftLoad(){
-  JSON.parse(localStorage.getItem('cssSleeper')).forEach(e=>{e==='s'?shiftS():false;e==='c'?shiftC():false;e==='n'?shiftN():false;})
+function shiftU(){
+  localStorage.removeItem('cssSleeper');
 }
 
 function buttons(){
@@ -70,18 +73,23 @@ function buttons(){
   buttonEleS = document.createElement('button');
   buttonEleN = document.createElement('button');
   buttonEleL = document.createElement('button');
+  buttonEleU = document.createElement('button');
   buttonEleC.type = 'button';
   buttonEleS.type = 'button';
   buttonEleN.type = 'button';
   buttonEleL.type = 'button';
+  buttonEleU.type = 'button';
   buttonEleC.title = 'otherwise it will trigger while typing';
   buttonEleS.title = 'button needs to be focus for keypress';
   buttonEleN.title = '1st kill inline styles & 2nd purge styled elements';
   buttonEleL.title = 'Keeps button click count in localstorage to executes css-sleeper buttons: CSN on page load. Note! Dont go crazy with buttons.';
+  buttonEleU.title = 'Who would of guessed having a clear button is nice. press this and reload for css';
   buttonEleC.textContent = "css-sleeper shift+C"
   buttonEleS.textContent = "css-sleeper shift+S"
   buttonEleN.textContent = "css-sleeper shift+N"
   buttonEleL.textContent = "css-sleeper Keep"
+  buttonEleU.textContent = "css-sleeper Clear"
+  document.body.prepend(buttonEleU)
   document.body.prepend(buttonEleL)
   document.body.prepend(buttonEleN)
   document.body.prepend(buttonEleC)
@@ -90,5 +98,6 @@ function buttons(){
   buttonEleS.onclick = shiftS
   buttonEleN.onclick = shiftN
   buttonEleL.onclick = shiftL
+  buttonEleU.onclick = shiftU
 }
 
