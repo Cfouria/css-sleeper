@@ -56,7 +56,7 @@ function shiftC(){
   fcount.push('c')
 }
 function shiftN(){
-  if (document.querySelectorAll('[style]').length) {true} else {inlinestyles.length ? inlinestyles.map(e=>{e.remove();inlinestyles=[]}):false}
+  (document.querySelectorAll('[style]').length===0) ? inlinestyles.map(e=>e.remove()) : false
   inlinestyles= [...document.querySelectorAll('[style]')]
   inlinestyles.map(e=>e.removeAttribute('style'))
   fcount.push('n')
@@ -81,7 +81,7 @@ function buttons(){
   buttonEleU.type = 'button';
   buttonEleC.title = 'otherwise it will trigger while typing';
   buttonEleS.title = 'button needs to be focus for keypress';
-  buttonEleN.title = '1st kill inline styles & 2nd purge styled elements';
+  buttonEleN.title = 'kill inline style attributes & if no style attributes purge the elements, that were styled, themselves';
   buttonEleL.title = 'Keeps button click count in localstorage to executes css-sleeper buttons: CSN on page load. Note! Dont go crazy with buttons.';
   buttonEleU.title = 'Who would of guessed having a clear button is nice. press this and reload for css';
   buttonEleC.textContent = "css-sleeper shift+C"
