@@ -89,6 +89,6 @@ function buttons(){
   buttonEleC.onclick = shiftC
   buttonEleS.onclick = shiftS
   buttonEleN.onclick = shiftN
-  buttonEleN.onclick = shiftL
+  buttonEleL.onclick = shiftL
 }
 
