@@ -1,0 +1,12 @@
+The goal of this script was to toggle styles at random in the hope that a website(youtube) becomes more friendly/easier/nicer. And, when you find what you like, it will be kept.
+The way this works is split all styles into groups add an 'all' and an 'empty' group, so that a group is toggled at once.
+The button with a C on it enables all and then disables 1 group.
+The button with a S on it toggles 1 group at a time.
+Both C and S share the same index of which group it will target on next click.
+It is not to try every combination.
+The N targets elements with 'style' attribute, clearing it and if empty ~removes~ the element.
+Fontkill ~removes~ a style containing the word 'font'.
+The Keep button will put the list of buttons clicked in localstorage, in order.
+Clear will remove the list from localstorage and enabled the styles that remain.
+And an input that when clicked will +1 the amount of 'buckets'.
+Note: the number does not match the amount of buckets. There are +2 buckets: 1 with all styles and 1 with no styles.
